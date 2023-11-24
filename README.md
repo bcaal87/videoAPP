@@ -2,7 +2,8 @@
 ## _Video APP_
 
 La presente aplicación se utilizará como una plataforma para administrar diferentes videos de forma interna para su reproducción en dispositivos anclados en Agencias (Smarts TVs) con el objetivo de publicar videos corporativos. La aplicación cuenta con un menú principal que posee varias vistas.
-La arquitectura es MVC, con BDD-Postgres
+
+**Arquitectura** MVC - Postgres DB
 
 - **Videos:** Vista general de los videos cargados (Panel de administración de los videos, donde el usuario administrador podrá eliminar los diferentes videos según su necesidad).
 
