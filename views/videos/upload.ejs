@@ -1,0 +1,27 @@
+<!-- ... Otras partes de tu HTML ... -->
+
+<h2>Subir Video</h2>
+<form action="/upload" method="post" enctype="multipart/form-data">
+  <label for="title">Título:</label>
+  <input type="text" id="title" name="title" required>
+  <br>
+  <label for="description">Descripción:</label>
+  <textarea id="description" name="description"></textarea>
+  <br>
+  <label for="video">Video:</label>
+  <input type="file" id="video" name="video" accept="video/*" required>
+  <br>
+  <!-- Agrega el campo para seleccionar la lista de reproducción -->
+  <label for="playlistId">Lista de Reproducción:</label>
+  <select id="playlistId" name="playlistId" required>
+    <!-- Itera sobre las listas de reproducción disponibles -->
+    <% playlists.forEach(playlist => { %>
+      <option value="<%= playlist.id %>"><%= playlist.name %></option>
+    <% }); %>
+  </select>
+  <br>
+  <button type="submit">Subir Video</button>
+</form>
+
+<!-- ... Otras partes de tu HTML ... -->
+

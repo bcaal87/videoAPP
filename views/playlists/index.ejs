@@ -1,0 +1,16 @@
+<!-- index.ejs -->
+
+<h1>Listas de Reproducción</h1>
+
+<ul>
+  <% playlists.forEach(playlist => { %>
+    <li>
+      <%= playlist.name %> - 
+      <a href="/playlists/<%= playlist.id %>/delete" onclick="return confirm('¿Estás seguro?')">Eliminar</a>
+      <a href="/playlists/<%= playlist.id %>/details">Detalles</a>
+    </li>
+  <% }); %>
+</ul>
+
+<a href="/playlists/create">Crear Nueva Lista</a>
+

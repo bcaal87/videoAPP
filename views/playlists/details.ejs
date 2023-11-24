@@ -1,0 +1,13 @@
+<!-- ... Otras partes de tu HTML ... -->
+
+<h2>Detalles de la Playlist</h2>
+<p>Nombre: <%= playlist[0].name %></p>
+<p>Videos:</p>
+<ul>
+  <% playlist.forEach(video => { %>
+    <li><%= video.title %></li>
+  <% }); %>
+</ul>
+
+<!-- ... Otras partes de tu HTML ... -->
+

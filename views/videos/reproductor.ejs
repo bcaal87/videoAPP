@@ -1,0 +1,47 @@
+<!-- Cambia el nombre del archivo a reproductor.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reproductor de Videos</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js/dist/video-js.css">
+</head>
+<body>
+
+<div class="container mt-5">
+  <h1 class="mb-4">Reproductor de Videos</h1>
+  <div class="row">
+    <div class="col-md-12">
+      <video id="videoPlayer" class="video-js vjs-default-skin" controls preload="auto" width="100%">
+        <!-- La lista de reproducción se construirá dinámicamente aquí -->
+      </video>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Obtener la lista de reproducción de videos desde el servidor
+  const videoSources = <%- JSON.stringify(videoSources) %>;
+
+  // Inicializar Video.js
+  const player = videojs('videoPlayer');
+
+  // Agregar las fuentes de video a la lista de reproducción
+  player.playlist(videoSources);
+
+  // Iniciar la reproducción del primer video
+  player.playlist.autoadvance(0);
+  player.playlist.currentItem(0);
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/video.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
