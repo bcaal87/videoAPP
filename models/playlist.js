@@ -1,12 +1,4 @@
-const { Pool } = require('pg');
-
-const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'dbvideoapp',
-  password: 'admin',
-  port: 5432,
-});
+const pool = require('../db');
 
 class Playlist {
   static async getAllPlaylists() {

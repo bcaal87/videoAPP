@@ -1,27 +1,42 @@
-<!-- ... Otras partes de tu HTML ... -->
+<html lang="en">
+  <head>
+    <%- include('../partials/head', {pageTitle: "Home"}); %>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <%- include('../partials/header'); %>
 
-<h2>Subir Video</h2>
-<form action="/upload" method="post" enctype="multipart/form-data">
-  <label for="title">Título:</label>
-  <input type="text" id="title" name="title" required>
-  <br>
-  <label for="description">Descripción:</label>
-  <textarea id="description" name="description"></textarea>
-  <br>
-  <label for="video">Video:</label>
-  <input type="file" id="video" name="video" accept="video/*" required>
-  <br>
-  <!-- Agrega el campo para seleccionar la lista de reproducción -->
-  <label for="playlistId">Lista de Reproducción:</label>
-  <select id="playlistId" name="playlistId" required>
-    <!-- Itera sobre las listas de reproducción disponibles -->
-    <% playlists.forEach(playlist => { %>
-      <option value="<%= playlist.id %>"><%= playlist.name %></option>
-    <% }); %>
-  </select>
-  <br>
-  <button type="submit">Subir Video</button>
-</form>
+    <!-- Contenido -->
+    <div class="container mt-5">
+      <h2>Subir Video</h2>
+      <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="title">Título:</label>
+        <input type="text" id="title" name="title" required class="form-control">
+        <br>
 
-<!-- ... Otras partes de tu HTML ... -->
+        <label for="description">Descripción:</label>
+        <textarea id="description" name="description" class="form-control"></textarea>
+        <br>
 
+        <label for="video">Video:</label>
+        <input type="file" id="video" name="video" accept="video/*" required class="form-control-file">
+        <br>
+
+        <!-- Agrega el campo para seleccionar la lista de reproducción -->
+        <label for="playlistId">Lista de Reproducción:</label>
+        <select id="playlistId" name="playlistId" required class="form-control">
+          <!-- Itera sobre las listas de reproducción disponibles -->
+          <% playlists.forEach(playlist => { %>
+          <option value="<%= playlist.id %>"><%= playlist.name %></option>
+          <% }); %>
+        </select>
+
+        <br>
+        <button type="submit" class="btn btn-primary">Subir Video</button>
+      </form>
+    </div>
+
+    <!-- Scripts -->
+    <%- include('../partials/scripts', {scripts: []}); %>
+  </body>
+</html>

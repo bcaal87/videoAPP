@@ -1,51 +1,16 @@
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Listado de Videos</title>
-  <!-- Enlace al archivo de estilos -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="/styles/video-list.css">
-</head>
-<body>
- <!-- Navbar -->
+  <head>
+    <%- include('../partials/head', {pageTitle: "Home"}); %>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <%- include('../partials/header'); %>
 
- <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-  <a class="navbar-brand text-white" href="/">
-    <i class="fas fa-film"></i> Video App
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link text-white" href="/upload">
-          <i class="fas fa-cloud-upload-alt"></i> Upload Videos
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-white" href="/reproductor">
-          <i class="fas fa-play"></i> Reproductor
-        </a>
-      </li>
-      <!-- Agrega el enlace para acceder a la sección de listas de reproducción -->
-      <li class="nav-item">
-        <a class="nav-link text-white" href="/playlists">
-          <i class="fas fa-list"></i> Listas de Reproducción
-        </a>
-      </li>
-    </ul>
-  </div>
-</nav>
-
-    <!-- videos list -->
-
-  <div class="container mt-5">
-    <h1 class="mb-4">Listado de Videos</h1>
-    <div class="row">
-      <% videos.forEach(video => { %>
+    <!-- Contenido -->
+    <div class="container mt-5">
+      <h1 class="mb-4">Listado de Videos</h1>
+      <div class="row">
+        <% videos.forEach(video => { %>
         <div class="col-md-4 mb-4">
           <div class="card">
             <div class="card-body">
@@ -53,7 +18,7 @@
               <p class="card-text"><%= video.description %></p>
               <video width="100%" controls>
                 <source src="/uploads/<%= video.filename %>" type="video/mp4">
-                Tu navegador no soporta el tag de video.
+                  Tu navegador no soporta el tag de video.
               </video>
               <div class="mt-3">
                 <a href="/delete/<%= video.id %>" class="btn btn-danger mr-2">Eliminar</a>
@@ -87,19 +52,11 @@
           </div>
         </div>
 
-      <% }); %>
+        <% }); %>
+      </div>
     </div>
-  </div>
 
-  <!-- Agrega los scripts de Bootstrap al final del cuerpo -->
- 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
-  
-</body>
+    <!-- Scripts -->
+    <%- include('../partials/scripts', {scripts: []}); %>
+  </body>
 </html>
-
-
-

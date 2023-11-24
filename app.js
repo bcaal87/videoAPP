@@ -1,22 +1,19 @@
+/* 
+Esta libreria nos permite cargar, variables de entorno de un archivo .env
+es util, para cuando estamos en desarrollo.
+*/
+require('dotenv').config()
+
 // app.js
 const express = require('express');
 const multer = require('multer');
-const { Pool } = require('pg');
 const bodyParser = require('body-parser');
 const videoController = require('./controllers/videoController');
 const playlistController = require('./controllers/playlistController');
+const pgPool = require('./db.js')
 
 const app = express();
-const port = 3000;
-
-// Configuración de PostgreSQL
-const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'dbvideoapp',
-  password: 'admin',
-  port: 5432,
-});
+const PORT = process.env.PORT || 3000;
 
 // Configurar body-parser
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -40,7 +37,7 @@ app.get('/', (req, res) => {
 // Rutas de la Aplicacion
 app.get('/videos', async (req, res) => {
   try {
-    await videoController.getVideosPage(req, res, pool); // Pasa 'pool' como parámetro
+    await videoController.getVideosPage(req, res, pgPool); // Pasa 'pool' como parámetro
   } catch (error) {
     console.error(error);
     res.status(500).send('Error interno del servidor');
@@ -60,7 +57,6 @@ app.get('/playlists/:id', playlistController.getPlaylistDetails);
 app.get('/playlists/:id/delete', playlistController.deletePlaylist);
 
 // Arrancar el servidor
-const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en el puerto ${PORT}`);
 });

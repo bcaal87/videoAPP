@@ -1,13 +1,22 @@
-<!-- ... Otras partes de tu HTML ... -->
+<html lang="en">
+  <head>
+    <%- include('../partials/head', {pageTitle: "Home"}); %>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <%- include('../partials/header'); %>
 
-<h2>Crear Playlist</h2>
-<form action="/playlists/create" method="post">
-  <label for="name">Nombre:</label>
-  <input type="text" id="name" name="name" required>
-  <br>
-  <button type="submit">Crear Playlist</button>
-</form>
+    <!-- Contenido -->
+    <div class="container mt-5">
+      <h2>Crear Playlist</h2>
+      <form action="/playlists/create" method="post">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" required class="form-control mb-3">
+        <button type="submit" class="btn btn-primary">Crear Playlist</button>
+      </form>
+    </div>
 
-<!-- ... Otras partes de tu HTML ... -->
-
-
+    <!-- Scripts -->
+    <%- include('../partials/scripts', {scripts: []}); %>
+  </body>
+</html>

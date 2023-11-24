@@ -1,58 +1,28 @@
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Listado de Videos</title>
-  <!-- Enlace al archivo de estilos -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="/styles/video-list.css">
-</head>
-<body>
- <!-- Navbar -->
+  <head>
+    <%- include('../partials/head', {pageTitle: "Home"}); %>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <%- include('../partials/header'); %>
 
- <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-  <a class="navbar-brand text-white" href="/">
-    <i class="fas fa-film"></i> Video App
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <!-- Corrige el href para la sección de videos -->
-        <a class="nav-link text-white" href="/videos">
-          <i class="fas fa-film"></i> Videos
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-white" href="/upload">
-          <i class="fas fa-cloud-upload-alt"></i> Upload Videos
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-white" href="/reproductor">
-          <i class="fas fa-play"></i> Reproductor
-        </a>
-      </li>
-      <!-- Agrega el enlace para acceder a la sección de listas de reproducción -->
-      <li class="nav-item">
-        <a class="nav-link text-white" href="/playlists">
-          <i class="fas fa-list"></i> Listas de Reproducción
-        </a>
-      </li>
-    </ul>
-  </div>
-</nav>
+    <!-- Contenido -->
+    <div class="container mt-5">
+      <h1>Esto es una prueba!</h1>
+    </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
-  
-</body>
+    <!-- Scripts -->
+
+    <!-- aqui podemos agregar mas scripts de manera condicional, por ejemplo
+    agregamos como base, los scripts de bootstrap (estos se encuentran directamente establecidos), 
+    pero si esta vista requiere por ejemplo una libreria de google maps la podemos incluir desde aca. -->
+
+    <!--- *** EJEMPLO ***
+
+    <%- include('../partials/scripts', {scripts: [
+    '<script type="text/javascript">setInterval(()=>{alert("test")}, 1500)</script>'
+    ]}); %>
+    -->
+    <%- include('../partials/scripts', {scripts: []}); %>
+  </body>
 </html>
-
-
-

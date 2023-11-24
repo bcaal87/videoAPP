@@ -1,13 +1,24 @@
-<!-- ... Otras partes de tu HTML ... -->
+<html lang="en">
+  <head>
+    <%- include('../partials/head', {pageTitle: "Home"}); %>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <%- include('../partials/header'); %>
 
-<h2>Detalles de la Playlist</h2>
-<p>Nombre: <%= playlist[0].name %></p>
-<p>Videos:</p>
-<ul>
-  <% playlist.forEach(video => { %>
-    <li><%= video.title %></li>
-  <% }); %>
-</ul>
+    <!-- Contenido -->
+    <div class="container mt-5">
+      <h2>Detalles de la Playlist</h2>
+      <p>Nombre: <%= playlist[0].name %></p>
+      <p>Videos:</p>
+      <ul>
+        <% playlist.forEach(video => { %>
+        <li><%= video.title %></li>
+        <% }); %>
+      </ul>
+    </div>
 
-<!-- ... Otras partes de tu HTML ... -->
-
+    <!-- Scripts -->
+    <%- include('../partials/scripts', {scripts: []}); %>
+  </body>
+</html>
