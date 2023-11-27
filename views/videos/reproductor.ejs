@@ -14,30 +14,27 @@
         <div class="col-md-12">
           <video id="videoPlayer" class="video-js vjs-default-skin" controls preload="auto" width="100%">
             <!-- La lista de reproducción se construirá dinámicamente aquí -->
+            <% videoSources.forEach(video => { %>
+              <source src="<%= video.sources[0].src %>" type="<%= video.sources[0].type %>">
+            <% }); %>
           </video>
         </div>
       </div>
     </div>
-
     <!-- Scripts -->
     <%- include('../partials/scripts', {scripts: [
       '<script src="https://cdn.jsdelivr.net/npm/video.js"></script>',
     ]}); %>
 
-    <!-- Script propios -->
-    <script type='text/javascript'>
-    // Obtener la lista de reproducción de videos desde el servidor
-    const videoSources = <%- JSON.stringify(videoSources) %>;
+   <!-- Script propios -->
+<script type='text/javascript'>
+  // Inicializar Video.js
+  const player = videojs('videoPlayer', {});
 
-    // Inicializar Video.js
-    const player = videojs('videoPlayer', {});
-
-    // Agregar las fuentes de video a la lista de reproducción
-    player.playlist(videoSources);
-
-    // Iniciar la reproducción del primer video
-    player.playlist.autoadvance(0);
-    player.playlist.currentItem(0);
-    </script>
+  // Iniciar la reproducción del primer video
+  player.playlist(videoSources);
+  player.playlist.autoadvance(0);
+  player.playlist.currentItem(0);
+</script>
   </body>
 </html>

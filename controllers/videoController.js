@@ -49,21 +49,31 @@ exports.deleteVideo = async (req, res) => {
   }
 };
 
-// Obtén la lista de videos y renderiza la página del reproductor
+// Obtener la lista de reproduccion y renderizar en el reproductor  
 exports.getReproductorPage = async (req, res) => {
   try {
-    const videos = await Video.getAllVideos();
-    const videoSources = videos.map(video => ({
-      src: `/uploads/${video.filename}`,
-      type: 'video/mp4',
-      label: video.title,
-    }));
+    const playlistId = 1; // Playlist quemado
+    const videos = await Playlist.getPlaylistWithVideos(playlistId);
+
+    const videoSources = videos.map((video) => {
+      return {
+        sources: [
+          { src: `/uploads/${video.filename}`, type: 'video/mp4' },
+          // Agregar formatos de video
+        ],
+        name: video.title,
+        description: video.description,
+        playlist: video.playlist, // informacion de la lista de reproduccion
+      };
+    });
+
     res.render('videos/reproductor', { videoSources });
   } catch (error) {
     console.error(error);
     res.status(500).send('Error interno del servidor');
   }
 };
+
 
 // Cambia el nombre de un video en la base de datos
 exports.renameVideo = async (req, res) => {
