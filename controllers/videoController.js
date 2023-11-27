@@ -52,18 +52,17 @@ exports.deleteVideo = async (req, res) => {
 // Obtener la lista de reproduccion y renderizar en el reproductor  
 exports.getReproductorPage = async (req, res) => {
   try {
-    const playlistId = 1; // Playlist quemado
-    const videos = await Playlist.getPlaylistWithVideos(playlistId);
+    const videos = await Video.getPlaylistWithVideos(); // Ajusta el nombre de la función
 
     const videoSources = videos.map((video) => {
       return {
         sources: [
           { src: `/uploads/${video.filename}`, type: 'video/mp4' },
-          // Agregar formatos de video
+          // Puedes agregar más formatos si es necesario
         ],
         name: video.title,
         description: video.description,
-        playlist: video.playlist, // informacion de la lista de reproduccion
+        playlist: video.playlist, // Asegúrate de tener la información correcta de la lista de reproducción aquí
       };
     });
 
@@ -73,6 +72,7 @@ exports.getReproductorPage = async (req, res) => {
     res.status(500).send('Error interno del servidor');
   }
 };
+
 
 
 // Cambia el nombre de un video en la base de datos
